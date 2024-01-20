@@ -13,5 +13,5 @@ export function generateFileList() {
     });
     html += "</ul>";
 
-    fs.writeFileSync("fileList.html", html);
+    fs.writeFileSync("./dist/fileList.html", html);
 }
