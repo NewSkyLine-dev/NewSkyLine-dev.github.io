@@ -1,4 +1,5 @@
 {
+    "homepage": "https://newskylinetwitter.github.io/",
     "name": "webuntis_server",
     "version": "1.0.0",
     "description": "",
@@ -6,12 +7,14 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "tsc && node dist/app.js",
-        "build": "tsc"
+        "build": "tsc",
+        "deploy": "gh-pages -d dist"
     },
     "author": "",
     "license": "ISC",
     "devDependencies": {
         "@types/node": "^20.11.5",
+        "gh-pages": "^6.1.1",
         "typescript": "^5.3.3"
     },
     "dependencies": {
