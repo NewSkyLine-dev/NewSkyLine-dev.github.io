@@ -56,8 +56,9 @@ import { generateFileList } from "./html_gen/schema";
         console.log(error);
     }
 
-    fs.mkdirSync("./dist/Stundenplan", { recursive: true });
-    fs.writeFileSync("./dist/Stundenplan/timetable.ics", value as string);
+    let ics_path = __dirname + "/Stundenplan";
+    fs.mkdirSync(ics_path, { recursive: true });
+    fs.writeFileSync(ics_path + "/timetable.ics", value as string);
 
     generateFileList();
 })().catch(console.error); // Catch any errors
