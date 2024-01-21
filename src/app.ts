@@ -39,7 +39,6 @@ import { generateFileList } from "./html_gen/schema";
                 event.startTime.getHours() - 2,
                 event.startTime.getMinutes(),
             ],
-            startInputType: "utc",
             end: [
                 event.endTime.getFullYear(),
                 event.endTime.getMonth() + 1,
@@ -47,7 +46,6 @@ import { generateFileList } from "./html_gen/schema";
                 event.endTime.getHours() - 2,
                 event.endTime.getMinutes(),
             ],
-            endInputType: "utc",
             location: event.room,
         });
     });
