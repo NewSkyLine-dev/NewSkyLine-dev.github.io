@@ -5,7 +5,6 @@ import { parseTimetable } from "./untis_utils/data";
 import * as fs from "fs";
 import * as ics from "ics";
 import { generateFileList } from "./html_gen/schema";
-import { DateTime } from "luxon";
 
 (async () => {
     const untis = new WebUntis(
@@ -30,30 +29,25 @@ import { DateTime } from "luxon";
     let icsEvents: ics.EventAttributes[] = [];
 
     events.forEach((event) => {
-        const startTime = DateTime.fromJSDate(event.startTime).setZone(
-            "Europe/Vienna"
-        );
-        const endTime = DateTime.fromJSDate(event.endTime).setZone(
-            "Europe/Vienna"
-        );
-
         icsEvents.push({
             title: event.name,
             description: event.description as string,
             start: [
-                startTime.year,
-                startTime.month,
-                startTime.day,
-                startTime.hour,
-                startTime.minute,
+                event.startTime.getFullYear(),
+                event.startTime.getMonth() + 1,
+                event.startTime.getDate(),
+                event.startTime.getHours(),
+                event.startTime.getMinutes(),
             ],
+            startInputType: "utc",
             end: [
-                endTime.year,
-                endTime.month,
-                endTime.day,
-                endTime.hour,
-                endTime.minute,
+                event.endTime.getFullYear(),
+                event.endTime.getMonth() + 1,
+                event.endTime.getDate(),
+                event.endTime.getHours(),
+                event.endTime.getMinutes(),
             ],
+            endInputType: "utc",
             location: event.room,
         });
     });
