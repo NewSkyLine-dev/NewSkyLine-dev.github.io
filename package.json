@@ -18,6 +18,7 @@
         "typescript": "^5.3.3"
     },
     "dependencies": {
+        "ical-generator": "^6.0.1",
         "ics": "^3.7.2",
         "webuntis": "^2.0.3"
     }

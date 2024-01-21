@@ -3,8 +3,8 @@ import { ILesson } from "./untis_utils/ints";
 import { parseDate } from "./untis";
 import { parseTimetable } from "./untis_utils/data";
 import * as fs from "fs";
-import * as ics from "ics";
 import { generateFileList } from "./html_gen/schema";
+import ical, { ICalCalendarMethod } from "ical-generator";
 
 (async () => {
     const untis = new WebUntis(
@@ -26,35 +26,20 @@ import { generateFileList } from "./html_gen/schema";
     events = parseTimetable(timetable);
 
     // Write ics file
-    let icsEvents: ics.EventAttributes[] = [];
+    const calendar = ical({ name: "Stundenplan" });
 
     events.forEach((event) => {
-        icsEvents.push({
-            title: event.name,
-            description: event.description as string,
-            start: [
-                event.startTime.getFullYear(),
-                event.startTime.getMonth() + 1,
-                event.startTime.getDate(),
-                event.startTime.getHours() - 2,
-                event.startTime.getMinutes(),
-            ],
-            end: [
-                event.endTime.getFullYear(),
-                event.endTime.getMonth() + 1,
-                event.endTime.getDate(),
-                event.endTime.getHours() - 2,
-                event.endTime.getMinutes(),
-            ],
+        calendar.createEvent({
+            start: event.startTime,
+            end: event.endTime,
+            summary: event.name,
+            description: event.description,
             location: event.room,
+            timezone: "Europe/Vienna",
         });
     });
 
-    const { error, value } = ics.createEvents(icsEvents);
-
-    if (error) {
-        console.log(error);
-    }
+    const value = calendar.toString();
 
     let ics_path = __dirname + "/Stundenplan";
     fs.mkdirSync(ics_path, { recursive: true });
