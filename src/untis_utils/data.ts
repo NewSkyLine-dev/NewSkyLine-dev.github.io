@@ -26,14 +26,18 @@ function parseTimetable(data: Lesson[]): ILesson[] {
             start = parseDate(lesson.date, lesson.startTime);
             end = parseDate(lesson.date, lesson.endTime);
         }
-        lessons.push({
-            name: subject,
-            teacher: teacher,
-            room: room,
-            startTime: start,
-            endTime: end,
-            description: "",
-        });
+        if (lesson.code === "cancelled") {
+            return;
+        } else {
+            lessons.push({
+                name: subject,
+                teacher: teacher,
+                room: room,
+                startTime: start,
+                endTime: end,
+                description: "",
+            });
+        }
     });
 
     return lessons;
