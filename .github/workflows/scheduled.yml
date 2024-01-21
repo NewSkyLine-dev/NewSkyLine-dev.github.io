@@ -1,14 +1,9 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: scheduled
 
 on:
-    workflow_run:
-        workflows: scheduled
+    schedule:
+        - cron: "0 */5 * * *"
 
-    push:
-        branches: [main]
-
-# Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
 permissions:
     contents: read
     pages: write
