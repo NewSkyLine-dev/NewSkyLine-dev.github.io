@@ -26,7 +26,7 @@ import ical, { ICalCalendarMethod } from "ical-generator";
     events = parseTimetable(timetable);
 
     // Write ics file
-    const calendar = ical({ name: "Stundenplan" });
+    const calendar = ical({ name: "Stundenplan", timezone: "Europe/Vienna" });
 
     events.forEach((event) => {
         calendar.createEvent({
