@@ -21,7 +21,7 @@ import * as icaltz from "@touch4it/ical-timezones";
     let events: ILesson[] = [];
 
     const timetable = await untis.getOwnTimetableForRange(
-        new Date(),
+        new Date(2024, 0, 21),
         new Date(2024, 5, 27)
     );
 
