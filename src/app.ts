@@ -5,6 +5,8 @@ import { parseTimetable } from "./untis_utils/data";
 import * as fs from "fs";
 import { generateFileList } from "./html_gen/schema";
 import ical, { ICalCalendarMethod } from "ical-generator";
+import setZone, { DateTime } from "luxon";
+import * as icaltz from "@touch4it/ical-timezones";
 
 (async () => {
     const untis = new WebUntis(
@@ -26,7 +28,15 @@ import ical, { ICalCalendarMethod } from "ical-generator";
     events = parseTimetable(timetable);
 
     // Write ics file
-    const calendar = ical({ name: "Stundenplan", timezone: "Europe/Vienna" });
+    const calendar = ical({
+        name: "Stundenplan",
+        method: ICalCalendarMethod.PUBLISH,
+    });
+
+    calendar.timezone({
+        name: "" as string,
+        generator: icaltz.getVtimezoneComponent,
+    });
 
     events.forEach((event) => {
         calendar.createEvent({
