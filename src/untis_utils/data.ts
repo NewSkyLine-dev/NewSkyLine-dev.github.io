@@ -1,4 +1,4 @@
-import { Lesson } from "webuntis";
+import { Exam, Lesson } from "webuntis";
 import { ILesson } from "./ints";
 import { parseDate } from "../untis";
 
@@ -26,6 +26,7 @@ function parseTimetable(data: Lesson[]): ILesson[] {
             start = parseDate(lesson.date, lesson.startTime);
             end = parseDate(lesson.date, lesson.endTime);
         }
+
         if (lesson.code === "cancelled") {
             return;
         } else {
@@ -43,4 +44,37 @@ function parseTimetable(data: Lesson[]): ILesson[] {
     return lessons;
 }
 
-export { parseTimetable };
+function parseExams(data: Exam[]): ILesson[] {
+    let exams: ILesson[] = [];
+
+    data.forEach((exam: Exam) => {
+        let room: string = "";
+        let subject: string = "";
+        let start = new Date();
+        let end = new Date();
+
+        if (exam.rooms && exam.rooms.length > 0) {
+            room = exam.rooms[0];
+        }
+        if (exam.subject) {
+            subject = exam.subject;
+        }
+        if (exam.startTime && exam.endTime) {
+            start = parseDate(exam.examDate, exam.startTime);
+            end = parseDate(exam.examDate, exam.endTime);
+        }
+
+        exams.push({
+            name: subject,
+            teacher: "",
+            room: room,
+            startTime: start,
+            endTime: end,
+            description: "",
+        });
+    });
+
+    return exams;
+}
+
+export { parseTimetable, parseExams };

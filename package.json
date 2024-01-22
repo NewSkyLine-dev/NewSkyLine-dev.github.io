@@ -3,7 +3,7 @@
     "name": "webuntis_server",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
+    "main": "src/app.cjs",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "tsc && node dist/app.js",
@@ -15,13 +15,11 @@
     "devDependencies": {
         "@types/luxon": "^3.4.2",
         "@types/node": "^20.11.5",
-        "gh-pages": "^6.1.1",
         "typescript": "^5.3.3"
     },
     "dependencies": {
         "@touch4it/ical-timezones": "^1.9.0",
         "ical-generator": "^6.0.1",
-        "ics": "^3.7.2",
         "luxon": "^3.4.4",
         "webuntis": "^2.0.3"
     }
