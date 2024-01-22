@@ -2,8 +2,8 @@
 name: Deploy static content to Pages
 
 on:
-    workflow_run:
-        workflows: scheduled
+    schedule:
+        - cron: "0 */5 * * *"
 
     push:
         branches: [main]
