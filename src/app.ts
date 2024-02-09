@@ -44,12 +44,6 @@ const untis = new WebUntis(
     let timetable_events: ILesson[] = parseTimetable(timetable);
     const exams_events: IExam[] = parseExams(exams);
 
-    // Write exam_events to a json file
-    fs.writeFileSync(
-        __dirname + "/Exams/exams.json",
-        JSON.stringify(exams_events, null, 2)
-    );
-
     // Check for duplicate events
     timetable_events = checkDuplicateEvents(timetable_events, exams_events);
 
