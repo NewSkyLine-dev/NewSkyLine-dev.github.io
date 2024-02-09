@@ -14,8 +14,9 @@
             "program": "${workspaceFolder}/dist/app.js",
             "console": "integratedTerminal",
             "outFiles": [
-                "${workspaceFolder}/**/*.js"
-            ]
+                "${workspaceFolder}/dist/**/*.js"
+            ],
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

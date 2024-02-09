@@ -1,4 +1,4 @@
-export interface ILesson {
+interface ILesson {
     name: string;
     teacher: string;
     room: string;
@@ -6,3 +6,9 @@ export interface ILesson {
     endTime: Date;
     description: string | null;
 }
+
+interface IExam extends ILesson {
+    examType: string;
+}
+
+export { ILesson, IExam };

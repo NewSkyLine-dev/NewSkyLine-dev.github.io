@@ -2,22 +2,20 @@
     "homepage": "https://newskylinetwitter.github.io/",
     "name": "webuntis_server",
     "version": "1.0.0",
-    "description": "",
-    "main": "src/app.cjs",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "tsc && node dist/app.js",
+        "dev": "tsc && node --env-file .env dist/app.js",
         "build": "tsc",
-        "deploy": "gh-pages -d dist"
+        "deploy": "tsc && node dist/app.js"
     },
-    "author": "",
-    "license": "ISC",
     "devDependencies": {
         "@types/luxon": "^3.4.2",
         "@types/node": "^20.11.5",
+        "dotenv": "^16.4.0",
         "typescript": "^5.3.3"
     },
     "dependencies": {
+        "@notionhq/client": "^2.2.14",
         "@touch4it/ical-timezones": "^1.9.0",
         "ical-generator": "^6.0.1",
         "luxon": "^3.4.4",

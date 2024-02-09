@@ -1,5 +1,5 @@
 import { Exam, Lesson } from "webuntis";
-import { ILesson } from "./ints";
+import { IExam, ILesson } from "./ints";
 import { parseDate } from "../untis";
 
 function parseTimetable(data: Lesson[]): ILesson[] {
@@ -44,14 +44,15 @@ function parseTimetable(data: Lesson[]): ILesson[] {
     return lessons;
 }
 
-function parseExams(data: Exam[]): ILesson[] {
-    let exams: ILesson[] = [];
+function parseExams(data: Exam[]): IExam[] {
+    let exams: IExam[] = [];
 
     data.forEach((exam: Exam) => {
         let room: string = "";
         let subject: string = "";
         let start = new Date();
         let end = new Date();
+        let examType: string = "";
 
         if (exam.rooms && exam.rooms.length > 0) {
             room = exam.rooms[0];
@@ -64,6 +65,10 @@ function parseExams(data: Exam[]): ILesson[] {
             end = parseDate(exam.examDate, exam.endTime);
         }
 
+        if (exam.examType) {
+            examType = exam.examType;
+        }
+
         exams.push({
             name: subject,
             teacher: "",
@@ -71,6 +76,7 @@ function parseExams(data: Exam[]): ILesson[] {
             startTime: start,
             endTime: end,
             description: "",
+            examType: examType,
         });
     });
 
