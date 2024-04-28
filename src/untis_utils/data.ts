@@ -26,6 +26,9 @@ function parseTimetable(data: Lesson[]): ILesson[] {
             start = parseDate(lesson.date, lesson.startTime);
             end = parseDate(lesson.date, lesson.endTime);
         }
+        if (!lesson.startTime || !lesson.endTime) {
+            return;
+        }
 
         if (lesson.code === "cancelled") {
             return;
