@@ -45,7 +45,7 @@ const untis = new WebUntis(
     const exams_events: IExam[] = parseExams(exams);
 
     // Check for duplicate events
-    // timetable_events = checkDuplicateEvents(timetable_events, exams_events);
+    timetable_events = checkDuplicateEvents(timetable_events, exams_events);
 
     // Create calendars
     const [timetable_calendar, exam_calendar] = [
