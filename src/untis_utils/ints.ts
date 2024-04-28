@@ -4,7 +4,7 @@ interface ILesson {
     room: string;
     startTime: Date;
     endTime: Date;
-    description: string | null;
+    description?: string;
 }
 
 interface IExam extends ILesson {

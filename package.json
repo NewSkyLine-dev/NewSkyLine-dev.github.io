@@ -12,6 +12,7 @@
         "@types/luxon": "^3.4.2",
         "@types/node": "^20.11.5",
         "dotenv": "^16.4.0",
+        "ts-node": "^10.9.2",
         "typescript": "^5.3.3"
     },
     "dependencies": {

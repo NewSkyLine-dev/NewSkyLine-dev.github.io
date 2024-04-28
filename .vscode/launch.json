@@ -8,14 +8,11 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "program": "${workspaceFolder}/dist/app.js",
+            "skipFiles": ["<node_internals>/**"],
+            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/ts-node",
+            "runtimeArgs": ["--transpile-only"],
+            "program": "${workspaceFolder}/src/app.ts",
             "console": "integratedTerminal",
-            "outFiles": [
-                "${workspaceFolder}/dist/**/*.js"
-            ],
             "envFile": "${workspaceFolder}/.env"
         }
     ]
