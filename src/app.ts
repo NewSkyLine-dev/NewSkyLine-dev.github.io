@@ -35,7 +35,7 @@ const untis = new WebUntis(
     const [timetable, exams] = await Promise.all([
         untis.getOwnTimetableForRange(
             new Date(2024, 9 - 1, 2),
-            new Date(2025, 2 - 1, 2)
+            new Date(2025, 6 - 1, 29)
         ),
         untis.getExamsForRange(new Date(2024, 0, 21), new Date(2024, 5, 27)),
     ]);
