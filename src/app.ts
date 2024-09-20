@@ -37,7 +37,7 @@ const untis = new WebUntis(
             new Date(2024, 9 - 1, 2),
             new Date(2025, 6 - 1, 29)
         ),
-        untis.getExamsForRange(new Date(2024, 9-1, 2), new Date(2024, 6-1, 29)),
+        untis.getExamsForRange(new Date(2024, 9-1, 2), new Date(2025, 6-1, 29)),
     ]);
 
     // Parse timetable and exams
