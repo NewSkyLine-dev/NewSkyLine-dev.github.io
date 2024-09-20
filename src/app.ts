@@ -37,7 +37,7 @@ const untis = new WebUntis(
             new Date(2024, 9 - 1, 2),
             new Date(2025, 6 - 1, 29)
         ),
-        untis.getExamsForRange(new Date(2024, 0, 21), new Date(2024, 5, 27)),
+        untis.getExamsForRange(new Date(2024, 9-1, 2), new Date(2024, 6-1, 29)),
     ]);
 
     // Parse timetable and exams
@@ -72,7 +72,7 @@ const untis = new WebUntis(
 
     // Write calendars to files
     await Promise.all([
-        writeCalendarToFile(timetable_calendar, "Stundenplan/timetable.ics"),
+        writeCalendarToFile(timetable_calendar, "Timetable/timetable.ics"),
         writeCalendarToFile(exam_calendar, "Exams/exams.ics"),
     ]);
 
